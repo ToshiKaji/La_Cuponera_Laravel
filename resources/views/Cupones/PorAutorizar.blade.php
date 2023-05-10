@@ -16,6 +16,8 @@ se muestratran los cupones por autorizar
       <th scope="col">Stock</th>
       <th scope="col">imagen</th>
       <th scope="col">Estado</th>
+      <th scope="col">Activar</th>
+      <th scope="col">Rechazar</th>
       
     </tr>
   </thead>
@@ -35,10 +37,17 @@ se muestratran los cupones por autorizar
       <td>{{$cupon->cantidad_lim}}</td>
       <td>{{$cupon->imagen}}</td>
       <td>{{$cupon->activado}}</td>
+      <td>
+        <form action="{{url('/Cupones/'.$cupon->id_cu.'/edit')}}" method="post">
+            @csrf
+            {{method_field('GET')}}
+            <input type="submit" onclick="return confirm('Quieres activar el cupon?')" value="Activar">
+        </form>
+      </td>
+      <td></td>
     </tr>
    @endforeach
   </tbody>
 </table>
-<a href="{{url('/Cupones/Cupone/edit')}}" class="action">Ver inactivos</a>
-<a href="{{url('/Cupones/Cupone')}}" class="action">Ver Todos</a>
+<a href="{{url('/Cupones/'.$cupon->id_cu.'/edit')}}" class="action">Activar</a>
     

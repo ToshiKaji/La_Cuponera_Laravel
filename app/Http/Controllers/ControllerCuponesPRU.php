@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-Use App\Models\Cupone;
+
+use App\Models\Cupone;
 use Illuminate\Http\Request;
 
 class ControllerCupones extends Controller
@@ -11,9 +12,12 @@ class ControllerCupones extends Controller
      */
     public function index()
     {
+        
         $datos['cupones']=Cupone::all();
         return view('Cupones.PorAutorizar',$datos);
+        
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,32 +38,33 @@ class ControllerCupones extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Cupone $cupone)
     {
-        //
+       
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Cupone $cupone)
     {
-        $cupon=Cupone::findOrFail($id);
-        return view('Cupones.Editar_cupon',compact('cupon'));
+        
+       
     }
+   
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update($id)
     {
-        //
+      
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Cupone $cupone)
     {
         //
     }
