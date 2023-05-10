@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\CuponesController;
+use App\Http\Controllers\ControllerCupones;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,14 +13,6 @@ use app\Http\Controllers\CuponesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/Cupones', function () {
-    return view('Cupones.PorAutorizar');
-});
-
-Route::get('/Cupones/index',[CuponesController::class,'index']);
+Route::resource('Cupones',ControllerCupones::class);
 
 

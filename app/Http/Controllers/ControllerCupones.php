@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Cupone;
 use Illuminate\Http\Request;
 
-class CuponesController extends Controller
+class ControllerCupones extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // 
-        return view('Cupones.PorAutorizar');
+        //
     }
 
     /**
@@ -37,7 +36,8 @@ class CuponesController extends Controller
      */
     public function show(Cupone $cupone)
     {
-        //
+        $datos['cupones']=Cupone::all();
+        return view('Cupones.PorAutorizar',$datos);
     }
 
     /**
@@ -45,8 +45,11 @@ class CuponesController extends Controller
      */
     public function edit(Cupone $cupone)
     {
-        //
+        $datos['cupones']=Cupone::all()->where('activado','=',0);
+        return view('Cupones.PorAutorizar',$datos);
+       
     }
+   
 
     /**
      * Update the specified resource in storage.
